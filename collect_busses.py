@@ -43,7 +43,6 @@ def load_data(api_key, catalog):
 
         with open(catalog + "\\bus" + str(i) + ".txt", "a") as file:
             file.write(str(bus_positions))
-        # print(bus_positions)
 
         time.sleep(interval_in_seconds)
         current_time = time.time()

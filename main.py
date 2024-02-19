@@ -10,7 +10,6 @@ def main():
     df_bus = read_data(catalog)
     speed = proc_speed(df_bus)
     proc_puntuality(df_bus, speed)
-    # print(df_bus)
 
 
 if __name__ == "__main__":

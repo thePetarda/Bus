@@ -84,23 +84,3 @@ def proc_speed(df):
     print(f"number of buses that exceeded the speed of 50 km/h: {exceed_number} ({proc} %)")
     create_map(data)
     return data
-
-
-# def main():
-    # lat1 = 52.24524155385209
-    # lon1 = 20.942939768581045
-    # lat2 = 51.74189745746514
-    # lon2 = 19.375638234898407
-    # ans = to_meters(lat1, lon1, lat2, lon2)
-    # print(ans)
-#     catalog = "test1"
-#     clean_files(catalog)
-#     df = to_data_frame(catalog)
-#     data = get_spedd(df)
-#     create_histogram(data)
-#     print(count_over_50(data))
-#     create_map(data)
-
-
-# if __name__ == "__main__":
-#     main()

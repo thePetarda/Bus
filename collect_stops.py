@@ -27,7 +27,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# https://api.um.warszawa.pl/api/action/public_transport_routes/?apikey=efdf77db-cfc6-4cc8-8f53-34bda9d70dea
-# https://api.um.warszawa.pl/api/action/dbtimetable_get?id=e923fa0e-d96c-43f9-ae6e-60518c9f3238&busstopId=5073&busstopNr=06&line=184&apikey=efdf77db-cfc6-4cc8-8f53-34bda9d70dea
-# https://api.um.warszawa.pl/api/action/dbstore_get?id=ab75c33d-3a26-4342-b36a-6e5fef0a3ac3&apikey=efdf77db-cfc6-4cc8-8f53-34bda9d70dea

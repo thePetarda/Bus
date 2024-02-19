@@ -50,7 +50,6 @@ def main():
     # catalog = "bus2024_02_06_ 12_45_18"
     # catalog = "bus2024_02_04_ 15_31_43"
     catalog = "bus2024_02_03_ 22_30_02"
-    # catalog = "test2"
     clean_files(catalog)
     print(to_data_frame(catalog))
     print(read_data(catalog))

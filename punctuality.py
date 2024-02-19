@@ -72,38 +72,3 @@ def proc_puntuality(bus_df: pd.DataFrame, speed):
     proc = round(punc_num / len(df) * 100, 2)
     print(f"number of buses that were puntual: {punc_num} ({proc} %)")
     create_map(df)
-    # return df
-
-
-# def proc_puntuality(bus_df: pd.DataFrame):
-#     bus_df = bus_df.sort_values(by=["Lines", "Lon", "Lat"])
-#     routes_df = get_all_routes(bus_df)
-#     routes_df = routes_df.sort_values(by=["Lines", "dlug_geo", "szer_geo"])
-#     i = 0
-#     j = 0
-#     while i < len(bus_df)-1:
-#         while j < len(routes_df)-2:
-#             while (bus_df["Lines"].iloc[i] != routes_df["Lines"].iloc[j]):
-#                 j += 1
-#             if j == len(routes_df) - 2:
-#                 break
-#             dist1 = get_dist(bus_df["Lon"].iloc[i], bus_df["Lat"].iloc[i], routes_df["dlug_geo"].iloc[j], routes_df["szer_geo"].iloc[j])
-#             dist2 = get_dist(bus_df["Lon"].iloc[i], bus_df["Lat"].iloc[i], routes_df["dlug_geo"].iloc[j+1], routes_df["szer_geo"].iloc[j+1])
-#             while dist1 > dist2:
-#                 dist1 = dist2
-#                 j += 1
-#                 dist2 = get_dist(bus_df["Lon"].iloc[i], bus_df["Lat"].iloc[i], routes_df["dlug_geo"].iloc[j+1], routes_df["szer_geo"].iloc[j+1])
-#             if j == len(routes_df) - 2:
-#                 break
-#             if dist1 == dist2:
-#                 timetable = get_timetables(bus_df["Lines"].iloc[i], routes_df["zespol"].iloc[j+1], routes_df["slupek"].iloc[j+1])
-#                 if not timetable.empty:
-#                     # TODO
-#                     pass
-#             timetable = get_timetables(bus_df["Lines"].iloc[i], routes_df["zespol"].iloc[j], routes_df["slupek"].iloc[j])
-#             if not timetable.empty:
-#                 # TODO
-#                 pass
-#             i += 1
-
-
