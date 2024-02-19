@@ -33,17 +33,17 @@ def join_df(df: pd.DataFrame):
 
 
 def calc_speed(row):
-    if row['Time_1'] == row['Time_2']:
-        return [0, row['Lat_1'], row['Lon_1'], row["Lines_1"], row["Time_1"]]
     time2 = datetime.strptime(row['Time_2'], "%Y-%m-%d %H:%M:%S")
     time1 = datetime.strptime(row['Time_1'], "%Y-%m-%d %H:%M:%S")
+    if time1 == time2:
+        return [0, row['Lat_1'], row['Lon_1'], row["Lines_1"], row["Time_1"]]
     time = abs(time2 - time1)
     dist = to_meters(row['Lat_1'], row['Lon_1'], row['Lat_2'], row['Lon_2'])
     velosity = dist/time.total_seconds()*3600/1000
     return [velosity, row['Lat_1'], row['Lon_1'], row["Lines_1"], row["Time_1"]]
 
 
-def get_spedd(df):
+def get_speed(df):
     df = join_df(df)
     ans = df.apply(calc_speed, axis=1)
     ans = ans[ans.apply(lambda x: x[0] != 0)]
@@ -77,7 +77,7 @@ def create_map(data: list):
 
 
 def proc_speed(df):
-    data = get_spedd(df)
+    data = get_speed(df)
     create_histogram(data)
     exceed_number = count_over_50(data)
     proc = round(exceed_number / len(data) * 100, 2)

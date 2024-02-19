@@ -16,8 +16,8 @@ def join_df(bus_df: pd.DataFrame, time_df: pd.DataFrame, speed):
     max_time = bus_df["Time"].max()
     max_time = timedelta(hours=max_time.hour, minutes=max_time.minute, seconds=max_time.second)
     time_df["Brigade"] = time_df["Brigade"].astype(str)
-    time_df = time_df[time_df['Time'] >= min_time]
-    time_df = time_df[time_df['Time'] <= max_time]
+    # time_df = time_df[time_df['Time'] >= min_time]
+    # time_df = time_df[time_df['Time'] <= max_time]
     df = pd.merge(time_df, bus_df, on=["Brigade", "Lines"], suffixes=["_stop", "_bus"])
     return df
 

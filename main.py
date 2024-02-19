@@ -9,6 +9,7 @@ def main():
     clean_files(catalog)
     df_bus = read_data(catalog)
     speed = proc_speed(df_bus)
+    print(speed)
     proc_puntuality(df_bus, speed)
 
 
