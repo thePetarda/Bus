@@ -1,0 +1,1 @@
+{'result': [{'values': [{'value': 'null', 'key': 'symbol_2'}, {'value': 'null', 'key': 'symbol_1'}, {'value': '52', 'key': 'brygada'}, {'value': 'Brzeziny', 'key': 'kierunek'}, {'value': 'TD-0DCN', 'key': 'trasa'}, {'value': '03:55:00', 'key': 'czas'}]}]}
