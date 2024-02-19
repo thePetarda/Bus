@@ -7,6 +7,7 @@ from load_data import to_data_frame, clean_files
 import webbrowser
 
 
+# funkcja zamienia położenie dwóch punktów na odległość między nimi w metrach
 def to_meters(lat1, lon1, lat2, lon2):
     R = 6371000
 
@@ -22,6 +23,7 @@ def to_meters(lat1, lon1, lat2, lon2):
     return R * c
 
 
+# funkcja łączy położenia autobusów z ich położeniami w kolejnym pomiarze
 def join_df(df: pd.DataFrame):
     df = df.sort_values(by=['Lines', 'Brigade', 'Time'])
     df2 = df.shift(-1)
@@ -32,6 +34,7 @@ def join_df(df: pd.DataFrame):
     return merged_df
 
 
+# funkcja oblicza prędkość autobusu
 def calc_speed(row):
     time2 = datetime.strptime(row['Time_2'], "%Y-%m-%d %H:%M:%S")
     time1 = datetime.strptime(row['Time_1'], "%Y-%m-%d %H:%M:%S")
@@ -50,6 +53,7 @@ def get_speed(df):
     return ans
 
 
+# funkcja przednawia histogram zmierzonych prędkości
 def create_histogram(data: list):
     plt.hist([el[0] for el in data])
     plt.xlabel("prędkość autobusu [km/h]")
@@ -58,6 +62,7 @@ def create_histogram(data: list):
     plt.savefig("Histogram_prędkość")
 
 
+# funkcja oblicza ilość autobusów przekraczających prędkość
 def count_over_50(data: list):
     ans = 0
     for el in data:
@@ -66,6 +71,7 @@ def count_over_50(data: list):
     return ans
 
 
+# funkcja przedtawia autobusy przekraczające prędkość na mapie Warszawy
 def create_map(data: list):
     map = folium.Map(location=[52.239, 21.045], zoom_start=10)
     for el in data:

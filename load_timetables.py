@@ -4,6 +4,7 @@ import pandas as pd
 import json
 
 
+# funkcja pobiera trasy autobusów w postaci Dataframe
 def get_routes():
     directory = "timetables"
     routes = []
@@ -25,6 +26,7 @@ def get_routes():
     return pd.DataFrame(routes)
 
 
+# funkcja pobiera pozycje przystanków w postaci Dataframe
 def get_stops():
     directory = "timetables"
     stops = []
@@ -49,6 +51,7 @@ def get_stops():
     return pd.DataFrame(stops)
 
 
+# funkcja pobiera rozkłady jazdy autobusów w postaci Dataframe
 def get_timetables():
     time_files = []
     timetables = []
@@ -85,6 +88,7 @@ def get_timetables():
     return pd.DataFrame(timetables)
 
 
+# funkcja pobiera dane o rozkładach jazdy autobusów i pozycjach przystanków i zapisuje je w formie jednego Dataframe
 def join_timetables():
     timetables = get_timetables()
     routes = get_routes()
@@ -97,6 +101,7 @@ def join_timetables():
     return timetables
 
 
+# funkcja pobiera dane o rozkładach jazdy autobusów i pozycjach przystanków w postaci Dataframe
 def read_timetables():
     return pd.read_json("processed/timetables.json")
 

@@ -6,6 +6,7 @@ import folium
 import webbrowser
 
 
+# funkcja łączy odpowiednie pozycje autobusów z odpowiednimi rozkładami jazdy i przystankami
 def join_df(bus_df: pd.DataFrame, time_df: pd.DataFrame, speed):
     speed_df = pd.DataFrame(speed.tolist(), columns=['Velosity', 'Lat', 'Lon', 'Lines', 'Time'])
     bus_df = pd.merge(bus_df, speed_df, on=['Lat', 'Lon', 'Lines', 'Time'])
@@ -22,6 +23,7 @@ def join_df(bus_df: pd.DataFrame, time_df: pd.DataFrame, speed):
     return df
 
 
+# funkcja ocenia czy autobus przyjeżdża punktualnie na dany przystanek
 def calc_punctuality(row):
     time = row["Time_diff"]
     dist = to_meters(row['Lat_stop'], row['Lon_stop'], row['Lat_bus'], row['Lon_bus']) / 1000
@@ -46,6 +48,7 @@ def time_diff(row):
     return time
 
 
+# funkcja przedtawia spóźnione autobusy na mapie Warszawy
 def create_map(data: pd.DataFrame):
     map = folium.Map(location=[52.239, 21.045], zoom_start=10)
     for index, el in data.iterrows():
@@ -60,6 +63,7 @@ def create_map(data: pd.DataFrame):
     webbrowser.open("map_punc.html")
 
 
+# funkcja bada punktualność autobusów
 def proc_puntuality(bus_df: pd.DataFrame, speed):
     time_df = read_timetables()
     df = join_df(bus_df, time_df, speed)

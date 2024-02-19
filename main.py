@@ -5,11 +5,10 @@ from punctuality import proc_puntuality
 
 def main():
     catalog = "bus2024_02_03_ 22_30_02"
-    # catalog = "test2"
+    # catalog = "bus2024_02_04_ 15_31_43"
     clean_files(catalog)
     df_bus = read_data(catalog)
     speed = proc_speed(df_bus)
-    print(speed)
     proc_puntuality(df_bus, speed)
 
 

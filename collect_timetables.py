@@ -4,6 +4,7 @@ import os
 from collect_busses import create_dir
 
 
+# funkcja pobiera dane o trasach autobusów
 def get_routes(api_key):
     url = "https://api.um.warszawa.pl/api/action/public_transport_routes/?apikey="
     url += api_key
@@ -14,6 +15,7 @@ def get_routes(api_key):
     return data
 
 
+# funkcja pobiera dane o rozkładzie jazdy dla konkretnej linii i konkretnego przystanku
 def get_timetables(api_key, stop_id, stop_nr, line):
     url = 'https://api.um.warszawa.pl/api/action/dbtimetable_get?id=e923fa0e-d96c-43f9-ae6e-60518c9f3238&busstopId=' + stop_id + '&busstopNr=' + stop_nr + '&line=' + line + '&apikey=' + api_key
     response = requests.get(url)
@@ -22,6 +24,7 @@ def get_timetables(api_key, stop_id, stop_nr, line):
     return data
 
 
+# funkcja koordynuje ładowanie rozkłądów jazdy
 def load_timetables(api_key, directory):
     create_dir(directory)
     routes = get_routes(api_key)

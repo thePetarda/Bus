@@ -2,9 +2,8 @@ import ast
 import os
 import pandas
 
-MAX_ID = 360
 
-
+#funkcja usuwa tekst z plików, do których nie udało się pobrać danych
 def clean_files(catalog):
     i = 0
     path = catalog + "//bus" + str(i) + ".txt"
@@ -21,6 +20,7 @@ def clean_files(catalog):
         path = catalog + "//bus" + str(i) + ".txt"
 
 
+# funkcja zamienia pobrane dane o pozycjach autobusów na Dataframe i zapisuje je
 def to_data_frame(catalog):
     dfs = []
     i = 0
@@ -42,6 +42,7 @@ def to_data_frame(catalog):
     return result_df
 
 
+# funkcja pobiera dane o pozycjach autobusów w postaci Dataframe
 def read_data(catalog):
     return pandas.read_json(f"processed/{catalog}.json")
 

@@ -5,6 +5,7 @@ import os
 from datetime import datetime
 
 
+# funkcja pobiera dane o pozycjach autobusów ze strony
 def get_bus_positions(api_key):
     url = "https://api.um.warszawa.pl/api/action/busestrams_get"
     params = {
@@ -25,6 +26,7 @@ def create_dir(catalog):
         os.makedirs(catalog)
 
 
+# funkcja koordynuje pobieranie pozycji autobusów przez godzinę co minutę
 def load_data(api_key, catalog):
     duration_in_seconds = 3600
     interval_in_seconds = 60
